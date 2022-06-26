@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/Documents/ANDROID_PRACTICE/MVVMWithDataBinding/app/src/main/res/drawable/drawable_genre_item.xml" value="0.155" />
         <entry key="..\:/Users/DELL/Documents/ANDROID_PRACTICE/MVVMWithDataBinding/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/DELL/Documents/ANDROID_PRACTICE/MVVMWithDataBinding/app/src/main/res/layout/activity_movie_detail.xml" value="0.12" />
         <entry key="..\:/Users/DELL/Documents/ANDROID_PRACTICE/MVVMWithDataBinding/app/src/main/res/layout/movie_adapter_item.xml" value="0.12" />
+        <entry key="..\:/Users/DELL/Documents/ANDROID_PRACTICE/MVVMWithDataBinding/app/src/main/res/layout/single_item_genre.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Documents/ANDROID_PRACTICE/MVVMWithDataBinding/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.155" />
       </map>
     </option>
   </component>

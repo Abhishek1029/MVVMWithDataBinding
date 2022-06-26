@@ -8,23 +8,38 @@
         <import type="android.text.TextUtils" />
         <import type="android.text.Html"/>
 
-        <variable
+<!--        <variable
             name="moviesData"
-            type="com.abhishek.mvvmwithdatabinding.data.datasource.Movies" />
+            type="com.abhishek.mvvmwithdatabinding.data.datasource.Movies" />-->
+
+        <!-- Or We can use get arrayList and position for tha t index and get the value from Array
+        LIst using that position-->
+
+        <import type="java.util.List"/>
+        <variable
+            name="movieDataList"
+            type="List&lt;com.abhishek.mvvmwithdatabinding.data.datasource.Movies>" />
+        <variable
+            name="position"
+            type="int" />
+        <variable
+            name="movieAdapter"
+            type="com.abhishek.mvvmwithdatabinding.ui.adapter.MoviesAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:onClick="@{()->movieAdapter.onItemClick(position)}">
 
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            app:displayImage="@{moviesData.imageUrl}"
+            app:displayImage="@{movieDataList[position].imageUrl}"
             app:layout_constraintDimensionRatio="w,6:6"
             app:layout_constraintEnd_toStartOf="@+id/movieNameTV"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -37,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{moviesData.name}"
+            android:text="@{movieDataList[position].name}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{TextUtils.join(`, `,moviesData.actors)}"
+            android:text='@{TextUtils.join(", ",movieDataList[position].actors)}'
             android:textSize="15sp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,7 @@
 package com.abhishek.mvvmwithdatabinding.ui.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abhishek.mvvmwithdatabinding.R
 import com.abhishek.mvvmwithdatabinding.data.datasource.Movies
 import com.abhishek.mvvmwithdatabinding.databinding.MovieAdapterItemBinding
+import com.abhishek.mvvmwithdatabinding.ui.activity.MovieDetailActivity
 
 private const val TAG = "MoviesAdapter"
 
-class MoviesAdapter :ListAdapter<Movies,MoviesAdapter.MoviesViewHolder>(ListItemCallback()) {
+class MoviesAdapter(val context: Context) :ListAdapter<Movies,MoviesAdapter.MoviesViewHolder>(ListItemCallback()) {
 
 
     class ListItemCallback : DiffUtil.ItemCallback<Movies>() {
@@ -32,18 +35,20 @@ class MoviesAdapter :ListAdapter<Movies,MoviesAdapter.MoviesViewHolder>(ListItem
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        val movieData = getItem(position)
-        Log.d("prine","${movieData.name} $position")
+        holder.binding.movieAdapter = this
+        //val movieData = getItem(position)
         holder.binding.apply {
-            moviesData = movieData
-        }
-        holder.binding.layout1.tag=position
-
-        holder.binding.layout1.setOnClickListener {
-            Log.d("pos","${holder.binding.layout1.tag}")
+            movieDataList = currentList
+            this.position = position
         }
     }
 
+    fun onItemClick(position: Int){
+        Intent(context,MovieDetailActivity::class.java).apply {
+            putExtra("movie",currentList[position])
+            context.startActivity(this)
+        }
+    }
 
     inner class MoviesViewHolder(val binding: MovieAdapterItemBinding) : RecyclerView.ViewHolder(binding.root) {
     }
