@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVVMWithDataBinding</string>
+    <string name="actors"> <![CDATA[<b>Actors:-</b>]]> </string>
+</resources>
